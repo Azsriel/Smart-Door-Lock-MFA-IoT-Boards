@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "author": "Furqaan Lateef",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -28.8, "left": -81.56, "attrs": {} },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -72.8,
+      "left": -247.38,
+      "attrs": {}
+    },
+    { "type": "wokwi-membrane-keypad", "id": "keypad1", "top": -462.8, "left": 24.8, "attrs": {} },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 159.4,
+      "left": -287,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd1",
+      "top": 217.6,
+      "left": 92,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:21", "lcd1:SDA", "green", [ "h28.8", "v172.8" ] ],
+    [ "esp:22", "lcd1:SCL", "green", [ "h38.4", "v211.2" ] ],
+    [ "esp:5V", "lcd1:VCC", "red", [ "h0.15", "v28.8" ] ],
+    [ "esp:GND.3", "lcd1:GND", "black", [ "h48", "v144" ] ],
+    [ "esp:23", "keypad1:R1", "yellow", [ "h105.6" ] ],
+    [ "esp:19", "keypad1:R2", "yellow", [ "h0" ] ],
+    [ "esp:18", "keypad1:R3", "yellow", [ "h124.8" ] ],
+    [ "esp:5", "keypad1:R4", "yellow", [ "h0" ] ],
+    [ "esp:17", "keypad1:C1", "cyan", [ "h0" ] ],
+    [ "esp:16", "keypad1:C2", "cyan", [ "h0" ] ],
+    [ "esp:4", "keypad1:C3", "cyan", [ "h0" ] ],
+    [ "esp:0", "keypad1:C4", "cyan", [ "h0" ] ],
+    [ "pir1:OUT", "esp:14", "green", [ "v0" ] ],
+    [ "servo1:V+", "esp:12", "green", [ "v0" ] ],
+    [ "servo1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "esp:GND.1", "pir1:GND", "black", [ "h0" ] ],
+    [ "esp:5V", "servo1:PWM", "red", [ "h0" ] ],
+    [ "esp:5V", "pir1:VCC", "red", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
